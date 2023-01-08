@@ -135,6 +135,5 @@ The big component of the mod is programming so the mod includes a native IDE wit
 
 Once you have multiple robots activated remember their names as you can use the remote to connect them.
 ![alt text](https://github.com/CityOfLearning/Robot/blob/master/images/gui/remote.png "Remote Interface")
-
-## Good luck!
-### If you find a bug please report it here
+## SonicandTailsCD:
+This mod was left intact: I'm working on making this mod work! Suggest anything here, I'll try to make it work. Wish me luck!
