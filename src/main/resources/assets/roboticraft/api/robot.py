@@ -13,7 +13,6 @@ import atexit
 import time
 
 class Robot:
-
     def __init__(self):
         self.mc = Minecraft()
         self.robotId = int(environ['MINECRAFT_ROBOT_ID'])

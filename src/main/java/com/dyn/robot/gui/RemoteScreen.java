@@ -33,25 +33,19 @@ public class RemoteScreen extends Show {
 
 	@Override
 	public void setup() {
-		Panel panel = new Panel((int) (width * .35), (int) (height * .05), (int) (width * .5), (int) (height * .9))
-				.setVisible(true).setFocused(true).setCanDrag(true);
-
+		Panel panel = new Panel((int) (width * .35), (int) (height * .05), (int) (width * .5), (int) (height * .9)).setVisible(true).setFocused(true).setCanDrag(true);
 		panel.registerComponent(new Picture(0, 0, panel.getWidth(), panel.getHeight(), DefaultTextures.BACKGROUND2));
 
 		List<ListEntry> buttonEntries = new ArrayList();
 
 		EntityPlayer player = Minecraft.getMinecraft().player;
 
-		buttonEntries.add(new MultiComponentListEntry()
-				.registerComponent(new Shape(0, 0, panel.getWidth() - 10, 30, ShapeType.RECT, Color.lightGray), 0, 0)
-				.registerComponent(new TextLabel(0, 0, panel.getWidth() - 10, 10, Color.black,
-						"Activated Robots Ready to Connect", TextAlignment.CENTER), 5, 10)
-				.registerComponent(new HorizontalLine(0, 0, panel.getWidth() - 4, 2, Color.white), 0, 30));
+		buttonEntries.add(new MultiComponentListEntry().registerComponent(new Shape(0, 0, panel.getWidth() - 10, 30, ShapeType.RECT, Color.lightGray), 0, 0).registerComponent(new TextLabel(0, 0, panel.getWidth() - 10, 10, Color.black,"Activated Robots Ready to Connect", TextAlignment.CENTER), 5, 10).registerComponent(new HorizontalLine(0, 0, panel.getWidth() - 4, 2, Color.white), 0, 30));
 
 		for (EntityRobot robot : RobotMod.currentRobots) {
-			if (!robot.isDead && (!robot.robot_inventory.getStackInSlot(RobotInventory.SIM_SLOT).isEmpty()
-					|| (robot.getPosition().distanceSq(player.getPosition()) < (64 * 64)))) {
-				buttonEntries.add(new MultiComponentListEntry()
+			if (!robot.isDead && (!robot.robot_inventory.getStackInSlot(RobotInventory.SIM_SLOT).isEmpty() 
+			|| (robot.getPosition().distanceSq(player.getPosition()) < (64 * 64)))) {
+						buttonEntries.add(new MultiComponentListEntry()
 						.registerComponent(new TextLabel(0, 0, (int) (panel.getWidth() * .8), 10, robot.getRobotName()),
 								5, 7)
 						.registerComponent(new TextLabel(0, 0, (int) (panel.getWidth() * .8), 10,

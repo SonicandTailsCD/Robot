@@ -9,6 +9,7 @@ buildscript {
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
 		classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.0.10"
+        classpath "net.minecraftforge:forgeBin:1.12.2-14.23.3.2678"
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'

@@ -67,42 +67,47 @@ public class RobotNodeProcessor extends WalkNodeProcessor {
 			return type;
 		}
 
-		if (material == Material.AIR) {
-			return PathNodeType.OPEN;
-		} else if ((block != Blocks.TRAPDOOR) && (block != Blocks.IRON_TRAPDOOR) && (block != Blocks.WATERLILY)) {
-			if (block == Blocks.FIRE) {
-				return ((SimpleRobotEntity) entity).getSuit().getMetadata() == 1 ? PathNodeType.OPEN
-						: PathNodeType.DAMAGE_FIRE;
-			} else if (block == Blocks.CACTUS) {
-				return PathNodeType.DAMAGE_CACTUS;
-			} else if ((block instanceof BlockDoor) && (material == Material.WOOD)
-					&& !iblockstate.getValue(BlockDoor.OPEN).booleanValue()) {
-				return PathNodeType.DOOR_WOOD_CLOSED;
-			} else if ((block instanceof BlockDoor) && (material == Material.IRON)
-					&& !iblockstate.getValue(BlockDoor.OPEN).booleanValue()) {
-				return PathNodeType.DOOR_IRON_CLOSED;
-			} else if ((block instanceof BlockDoor) && iblockstate.getValue(BlockDoor.OPEN).booleanValue()) {
-				return PathNodeType.DOOR_OPEN;
-			} else if (block instanceof BlockRailBase) {
-				return PathNodeType.RAIL;
-			} else if (!(block instanceof BlockFence) && !(block instanceof BlockWall)
-					&& (!(block instanceof BlockFenceGate)
-							|| iblockstate.getValue(BlockFenceGate.OPEN).booleanValue())) {
-				if (material == Material.WATER) {
-					return ((SimpleRobotEntity) entity).getSuit().getMetadata() == 2 ? PathNodeType.OPEN
-							: PathNodeType.WATER;
-				} else if (material == Material.LAVA) {
+		if (entity instanceof SimpleRobotEntity) {
+			if (material == Material.AIR) {
+				return PathNodeType.OPEN;
+			} else if ((block != Blocks.TRAPDOOR) && (block != Blocks.IRON_TRAPDOOR) && (block != Blocks.WATERLILY)) {
+				if (block == Blocks.FIRE) {
 					return ((SimpleRobotEntity) entity).getSuit().getMetadata() == 1 ? PathNodeType.OPEN
-							: PathNodeType.LAVA;
+							: PathNodeType.DAMAGE_FIRE;
+				} else if (block == Blocks.CACTUS) {
+					return PathNodeType.DAMAGE_CACTUS;
+				} else if ((block instanceof BlockDoor) && (material == Material.WOOD)
+						&& !iblockstate.getValue(BlockDoor.OPEN).booleanValue()) {
+					return PathNodeType.DOOR_WOOD_CLOSED;
+				} else if ((block instanceof BlockDoor) && (material == Material.IRON)
+						&& !iblockstate.getValue(BlockDoor.OPEN).booleanValue()) {
+					return PathNodeType.DOOR_IRON_CLOSED;
+				} else if ((block instanceof BlockDoor) && iblockstate.getValue(BlockDoor.OPEN).booleanValue()) {
+					return PathNodeType.DOOR_OPEN;
+				} else if (block instanceof BlockRailBase) {
+					return PathNodeType.RAIL;
+				} else if (!(block instanceof BlockFence) && !(block instanceof BlockWall)
+						&& (!(block instanceof BlockFenceGate)
+								|| iblockstate.getValue(BlockFenceGate.OPEN).booleanValue())) {
+					if (material == Material.WATER) {
+						return ((SimpleRobotEntity) entity).getSuit().getMetadata() == 2 ? PathNodeType.OPEN
+								: PathNodeType.WATER;
+					} else if (material == Material.LAVA) {
+						return ((SimpleRobotEntity) entity).getSuit().getMetadata() == 1 ? PathNodeType.OPEN
+								: PathNodeType.LAVA;
+					} else {
+						return block.isPassable(p_189553_1_, blockpos) ? PathNodeType.OPEN : PathNodeType.BLOCKED;
+					}
 				} else {
-					return block.isPassable(p_189553_1_, blockpos) ? PathNodeType.OPEN : PathNodeType.BLOCKED;
+					return PathNodeType.FENCE;
 				}
 			} else {
-				return PathNodeType.FENCE;
+				return PathNodeType.TRAPDOOR;
 			}
 		} else {
-			return PathNodeType.TRAPDOOR;
+			return PathNodeType.BLOCKED;
 		}
+		
 	}
 
 	@Override
