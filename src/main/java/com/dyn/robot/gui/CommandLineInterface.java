@@ -51,8 +51,7 @@ public class CommandLineInterface extends Show {
 	@Override
 	public void setup() {
 
-		registerComponent(output = (ScrollTextLabel) new ScrollTextLabel(5, 2 + (int) (height * .7), width - 10,
-				(int) (height * .3) - 25, "").setColor(Color.white).setMultilined(true));
+		registerComponent(output = (ScrollTextLabel) new ScrollTextLabel(5, 2 + (int) (height * .7), width - 10,(int) (height * .3) - 25, "").setColor(Color.white).setMultilined(true));
 		registerComponent(entryStyle = new TextLabel(5, height - 20, width, 20, Color.white, ">>>"));
 		registerComponent(
 				new TextBox(7 + TextRenderer.getFontRenderer().getStringWidth(">>>"), height - 20, width - 15, 20) {

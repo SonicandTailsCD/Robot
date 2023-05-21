@@ -141,7 +141,7 @@ public class RobotInventoryScreen extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		fontRenderer.drawString(robot.robot_inventory.getDisplayName().getUnformattedText(), 8, 6, 4210752);
-		fontRenderer.drawString("Your Inventory", 8, 112, 4210752);
+		fontRenderer.drawString("Your items", 8, 112, 4210752);
 	}
 
 	/**
@@ -164,6 +164,6 @@ public class RobotInventoryScreen extends GuiContainer {
 		ySize = (int) (height * .85);
 		guiTop = (int) (height * .075);
 		guiLeft = (width - xSize) / 5;
-		buttonList.add(new GuiButton(1, guiLeft + xSize + 20, ySize - 20, 150, 20, "Open Programmer"));
+		buttonList.add(new GuiButton(1, guiLeft + xSize + 20, ySize - 20, 150, 20, "Start Programming Window"));
 	}
 }
