@@ -9,7 +9,7 @@ buildscript {
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
 		classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.0.10"
-        classpath "net.minecraftforge:forgeBin:1.12.2-14.23.3.2678"
+        classpath "net.minecraftforge:forgeBin:1.12.2-14.23.5.2854"
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
@@ -25,7 +25,7 @@ repositories {
 		url "https://jitpack.io" 
 	}
 }
-version = "0.10.${buildNum}"
+version = "${buildNum}.${SonicandTailsCD.softbuildNum}.${SonicandTailsCD.hardBuildNum}"
 group = "com.dyn.robot" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Roboticraft"
 
@@ -35,7 +35,7 @@ compileJava {
 }
 
 minecraft {
-    version = "1.12.2-14.23.3.2678"
+    version = "1.12.2-14.23.5.2854"
     runDir = "run"
     
     // the mappings can be changed at any time, and must be in the following format.
